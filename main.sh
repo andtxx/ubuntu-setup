@@ -7,7 +7,8 @@ for shfile in $(ls lib); do
 done
 
 echo "Setup ubuntu"
-cd /
+
+current_path=$(pwd)
 
 header 'Base'
 base
@@ -18,4 +19,4 @@ packages
 header 'SSL'
 confirm 'Add ssl for nginx?' && letsencrypt_ssl
 
-cd / && rm -rf ubuntu-setup && cd ~/
+cd current_path && rm -rf ubuntu-setup && cd ~/

@@ -3,7 +3,8 @@ function base {
 
   adduser $username
   usermod -aG sudo $username
-  su - $username
+  su $username
+  cd ~/
 
   mkdir .ssh
   chmod 700 .ssh/
