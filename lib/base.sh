@@ -2,7 +2,7 @@ function base {
   read -p 'Username: ' username
 
   adduser $username
-  usermod -aG sudo newuser
+  usermod -aG sudo $username
   su - $username
 
   mkdir .ssh
