@@ -1,11 +1,4 @@
 function base {
-  read -p 'Username: ' username
-
-  adduser $username
-  usermod -aG sudo $username
-  su $username
-  cd ~/
-
   mkdir .ssh
   chmod 700 .ssh/
   ssh-keygen

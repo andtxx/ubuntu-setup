@@ -4,6 +4,12 @@
 
 # Usage
 
+**Create new user**
+
+```console
+adduser USERNAME && usermod -aG sudo USERNAME && su - USERNAME
+```
+
 **Check git**
 
 ```console
