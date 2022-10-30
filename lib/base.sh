@@ -12,9 +12,10 @@ function base {
     echo "$key" >>.ssh/authorized_keys
   fi
 
-  ssh_config_file='/etc/ssh/sshd_config'
-  ssh_config=$(cat $ssh_config_file)
-  sudo echo "${ssh_config/"# PermitRootLogin=yes"/PermitRootLogin=no}" >$ssh_config_file
+  config_path='/etc/ssh/sshd_config'
+  config=$(cat $config_path)
+  sudo echo "${config/"# PermitRootLogin=yes"/PermitRootLogin=no}" >sshd_config
+  sudo mv sshd_config config_path
   sudo service ssh restart
 
   header 'Configure firewall'
