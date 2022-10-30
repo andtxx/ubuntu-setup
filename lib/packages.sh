@@ -26,6 +26,7 @@ function packages {
   nvm install --lts
 
   npm install pm2 -g
+  pm2 startup | bash
 
   header 'Install & configure postgresql'
 

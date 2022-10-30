@@ -23,11 +23,7 @@ git --version
 **If git is not installed, install it**
 
 ```console
-sudo apt update
-```
-
-```console
-sudo apt install git
+sudo apt update && sudo apt install git
 ```
 
 **Then**
@@ -39,8 +35,6 @@ git clone https://github.com/andtxx/ubuntu-setup.git
 ```console
 bash ubuntu-setup/main.sh
 ```
-
-**Reopen terminal or run this to make node available**
 
 ```console
 source .bashrc
