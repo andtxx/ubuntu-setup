@@ -1,20 +1,23 @@
 function base {
+  header 'Configure ssh'
+
   mkdir .ssh
   chmod 700 .ssh/
   ssh-keygen
 
   if confirm 'Add ssh key?'; then
-    cd .ssh
-    touch authorized_keys
-    chmod 600 authorized_keys
+    touch .ssh/authorized_keys
+    chmod 600 .ssh/authorized_keys
     read -p 'Enter key: ' key
-    echo "$key" >>authorized_keys
+    echo "$key" >>.ssh/authorized_keys
   fi
 
-  sshConfigFile='/etc/ssh/sshd_config'
-  sshConfig=$(cat $sshConfigFile)
-  sudo echo "${sshConfig/"# PermitRootLogin=yes"/PermitRootLogin=no}" >$sshConfigFile
+  ssh_config_file='/etc/ssh/sshd_config'
+  ssh_config=$(cat $ssh_config_file)
+  sudo echo "${ssh_config/"# PermitRootLogin=yes"/PermitRootLogin=no}" >$ssh_config_file
   sudo service ssh restart
+
+  header 'Configure firewall'
 
   sudo ufw enable
   sudo ufw limit 22

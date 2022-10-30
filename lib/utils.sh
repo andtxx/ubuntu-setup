@@ -7,7 +7,9 @@ function confirm {
       prompt="$1"
     fi
 
+    printf '\n'
     read -r -p "$prompt [Y/n] " input
+    printf '\n'
 
     case $input in
     [yY][eE][sS] | [yY])
@@ -26,7 +28,8 @@ function confirm {
 }
 
 function header {
-  echo ""
-  echo "--- $1 ---"
-  echo ""
+  purple='\033[0;35m'
+  no_color='\033[0m'
+  printf "\n\n$purple--- $1 ---$no_color\n\n"
+  sleep 1
 }

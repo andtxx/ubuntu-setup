@@ -1,13 +1,17 @@
 # Ubuntu-setup
 
-**This can help to tune vps server and install most needed packages.**
+**This can help to tune ubuntu server and install most needed packages**
 
 # Usage
 
 **Create new user**
 
 ```console
-adduser USERNAME && usermod -aG sudo USERNAME && su - USERNAME
+username=enter_your_username
+```
+
+```console
+adduser $username && usermod -aG sudo $username && su - $username
 ```
 
 **Check git**
@@ -33,5 +37,11 @@ git clone https://github.com/andtxx/ubuntu-setup.git
 ```
 
 ```console
-cd ubuntu-setup && sudo bash main.sh
+bash ubuntu-setup/main.sh
+```
+
+**Reopen terminal or run this to make node available**
+
+```console
+source .bashrc
 ```
