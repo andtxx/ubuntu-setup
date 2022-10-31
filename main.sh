@@ -12,6 +12,6 @@ printf "\nSetup ubuntu"
 
 base
 packages
-confirm 'Add ssl for nginx?' && letsencrypt_ssl
+confirm 'Add domain with ssl?' && domain_with_ssl
 
 rm -rf $dir

@@ -33,9 +33,5 @@ git clone https://github.com/andtxx/ubuntu-setup.git
 ```
 
 ```console
-bash ubuntu-setup/main.sh
-```
-
-```console
-source .bashrc
+bash ubuntu-setup/main.sh && source .bashrc
 ```

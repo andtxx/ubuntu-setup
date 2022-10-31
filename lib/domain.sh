@@ -1,15 +1,20 @@
-function letsencrypt_ssl {
-  header "Add letsencrypt ssl"
-
-  read -p "Enter domain: " domain
-  nginx_config=$(cat "$dir/lib/.nginx.config")
-  nginx_config="${nginx_config//user/$USER}"
-  nginx_config="${nginx_config//domain/$domain}"
+function write_config {
+  nginx_config=$(cat "$1")
+  nginx_config="${nginx_config//USER/$USER}"
+  nginx_config="${nginx_config//DOMAIN/$domain}"
 
   sudo echo $nginx_config >$domain
   sudo mv $domain /etc/nginx/sites-available/$domain
   sudo ln -sf /etc/nginx/sites-available/$domain /etc/nginx/sites-enabled/$domain
   sudo systemctl reload nginx
+}
+
+function domain_with_ssl {
+  header "Setting domain with letsencrypt ssl"
+
+  read -p "Enter domain: " domain
+
+  write_config "$dir/lib/.nginx.conf"
 
   mkdir www
   mkdir www/$domain
@@ -19,4 +24,6 @@ function letsencrypt_ssl {
   sudo certbot --nginx -d $domain -d www.$domain
   sudo systemctl status certbot.timer
   sudo certbot renew --dry-run
+
+  write_config "$dir/lib/.nginx.ssl.conf"
 }
