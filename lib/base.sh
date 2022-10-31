@@ -14,7 +14,7 @@ function base {
 
   config_path='/etc/ssh/sshd_config'
   config=$(cat $config_path)
-  sudo echo "${config/"# PermitRootLogin=yes"/PermitRootLogin=no}" >sshd_config
+  sudo echo "${config/'#PermitRootLogin yes'/'PermitRootLogin no'}" >sshd_config
   sudo mv sshd_config config_path
   sudo service ssh restart
 
