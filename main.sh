@@ -8,7 +8,7 @@ for shfile in $(ls "$dir/lib"); do
   fi
 done
 
-printf "\nSetup ubuntu"
+printf "\n\e[1;45m$(tput bold)Setup ubuntu"
 
 base
 packages
