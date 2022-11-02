@@ -14,6 +14,8 @@ function domain_with_ssl {
 
   read -p "Enter domain: " domain
 
+  usermod -aG $USER www-data
+
   write_config "$dir/lib/.nginx.conf"
 
   mkdir www
