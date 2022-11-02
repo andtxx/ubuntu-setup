@@ -3,7 +3,7 @@ function write_config {
   nginx_config="${nginx_config//USER/$USER}"
   nginx_config="${nginx_config//DOMAIN/$domain}"
 
-  sudo echo $nginx_config >$domain
+  sudo echo "$nginx_config" >$domain
   sudo mv $domain /etc/nginx/sites-available/$domain
   sudo ln -sf /etc/nginx/sites-available/$domain /etc/nginx/sites-enabled/$domain
   sudo systemctl reload nginx
@@ -14,7 +14,7 @@ function domain_with_ssl {
 
   read -p "Enter domain: " domain
 
-  usermod -aG $USER www-data
+  sudo usermod -aG $USER www-data
 
   write_config "$dir/lib/.nginx.conf"
 
