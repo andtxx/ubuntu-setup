@@ -6,7 +6,7 @@ function packages {
   git config --global user.name "$git_username"
   git config --global user.email "$git_email"
 
-  header 'Install curl & ftp & nginx & python'
+  header 'Install curl & vsftpd & nginx & python'
 
   sudo apt update
   sudo apt install curl
@@ -28,7 +28,7 @@ function packages {
   npm install pm2 -g
   pm2 startup | bash
 
-  header 'Install & configure postgresql'
+  header 'Install postgresql'
 
   sudo apt install postgresql postgresql-contrib
   sudo systemctl start postgresql.service
